@@ -8,7 +8,7 @@ from rest_framework import permissions
 from base.models import Todo
 from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiExample
 from drf_spectacular.types import OpenApiTypes
-from rest_framework.pagination import PageNumberPagination
+from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 
 # Create your views here.
 
@@ -108,3 +108,14 @@ class ListAllTodos(APIView):
             page = paginator.paginate_queryset(todos, request)
             serializer = TodoSerializer(page, many=True)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+
+class ListAllTodosWithLimitOffsetPagination(APIView):
+    pagination_class = LimitOffsetPagination
+
+    def get(self, request):
+        todos = Todo.objects.all()
+        paginator = self.pagination_class()
+        page = paginator.paginate_queryset(todos, request)
+        serializer = TodoSerializer(page, many=True)
+        return paginator.get_paginated_response(serializer.data)
