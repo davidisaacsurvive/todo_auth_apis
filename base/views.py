@@ -31,7 +31,7 @@ class UserRegistrationView(APIView):
 
 
 class TodoListCreateView(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     serializer_class = TodoSerializer
 
     @extend_schema(
