@@ -13,6 +13,4 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'todo_auth_apis.settings')
 
-app = get_wsgi_application()
-
-application = app
+ application = get_wsgi_application()
