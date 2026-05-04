@@ -13,6 +13,7 @@ from rest_framework.pagination import PageNumberPagination, LimitOffsetPaginatio
 # Create your views here.
 
 class UserRegistrationView(APIView):
+    permission_classes = (permissions.AllowAny,)
     serializer_class = UserSerializer
 
     @extend_schema(
