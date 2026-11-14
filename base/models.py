@@ -55,3 +55,13 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Location(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Location ({self.latitude}, {self.longitude})"

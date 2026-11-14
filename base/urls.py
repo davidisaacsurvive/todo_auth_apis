@@ -9,4 +9,6 @@ urlpatterns = [
     path('paginated-todo/', views.TodoPaginatedView.as_view(), name='paginated-todos'),
     path('all-todos/', views.ListAllTodos.as_view(), name='all-todos'),
     path('todos-with-limit-offset/', views.ListAllTodosWithLimitOffsetPagination.as_view(), name='todos-with-limit-offset'),
+    path('locations/', views.LocationListCreateView.as_view(), name='locations'),
+    path('locations/<int:pk>/', views.LocationDetailView.as_view(), name='location-detail'),
 ]

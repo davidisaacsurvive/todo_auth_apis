@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from base.models import Todo
+from base.models import Todo, Location
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -31,3 +31,9 @@ class TodoSerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'title', 'description', 'completed', 'created_at']
         read_only_fields = ['user', 'created_at']
 
+
+class LocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = ['id', 'name', 'latitude', 'longitude', 'created_at']
+        read_only_fields = ['created_at']
